@@ -37,6 +37,12 @@ EgContactBookPresenter >> initializeWindow: aWindowPresenter [
 	aWindowPresenter title: self title
 ]
 
+{ #category : #testing }
+EgContactBookPresenter >> isContactSelected [
+
+	^ self table selectedItems isNotEmpty
+]
+
 { #category : #actions }
 EgContactBookPresenter >> newContact [
 	| rawData splitted |
@@ -52,6 +58,11 @@ EgContactBookPresenter >> newContact [
 		name: splitted first;
 		phone: splitted second;
 		yourself
+]
+
+{ #category : #accessing }
+EgContactBookPresenter >> selectedContact [
+	^ table selection selectedItem
 ]
 
 { #category : #initialization }

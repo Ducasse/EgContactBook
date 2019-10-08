@@ -29,6 +29,20 @@ EgContactBookPresenterTest >> tearDown [
 ]
 
 { #category : #running }
+EgContactBookPresenterTest >> testIsContactSelected [
+
+	presenter table selectIndex: 1.
+	self assert: presenter isContactSelected
+]
+
+{ #category : #running }
+EgContactBookPresenterTest >> testSelectedItem [
+
+	presenter table selectIndex: 1.
+	self assert: presenter selectedContact equals: presenter contactBook contacts first
+]
+
+{ #category : #running }
 EgContactBookPresenterTest >> testStartsWithoutSelection [
 
 	self assert: presenter table selection isEmpty
