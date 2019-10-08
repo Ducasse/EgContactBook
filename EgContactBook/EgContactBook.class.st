@@ -41,7 +41,7 @@ EgContactBook class >> reset [
 { #category : #initialization }
 EgContactBook >> add: contactName phone: phone [
 	| contact |
-	contact := EgContact named: contactName phone: phone.
+	contact := EgContact new name: contactName; phone: phone.
 	self addContact: contact.
 	^ contact
 ]
