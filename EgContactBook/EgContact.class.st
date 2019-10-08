@@ -8,6 +8,15 @@ Class {
 	#category : #EgContactBook
 }
 
+{ #category : #'instance creation' }
+EgContact class >> name: aNameString phone: aPhoneString [
+
+	^ self new
+		name: aNameString;
+		phone: aPhoneString;
+		yourself
+]
+
 { #category : #printing }
 EgContact >> name [
 	^ name

@@ -2,7 +2,7 @@ Class {
 	#name : #EgContactBook,
 	#superclass : #Object,
 	#instVars : [
-		'contents'
+		'contacts'
 	],
 	#classInstVars : [
 		'family',
@@ -38,7 +38,7 @@ EgContactBook class >> reset [
 	family := nil
 ]
 
-{ #category : #initialization }
+{ #category : #adding }
 EgContactBook >> add: contactName phone: phone [
 	| contact |
 	contact := EgContact new name: contactName; phone: phone.
@@ -46,39 +46,44 @@ EgContactBook >> add: contactName phone: phone [
 	^ contact
 ]
 
-{ #category : #initialization }
+{ #category : #adding }
 EgContactBook >> addContact: aContact [
-	contents add: aContact
+	contacts add: aContact
 ]
 
-{ #category : #initialization }
+{ #category : #adding }
 EgContactBook >> addContact: newContact after: contactAfter [ 
-	contents add: newContact after: contactAfter
+	contacts add: newContact after: contactAfter
 ]
 
-{ #category : #initialization }
-EgContactBook >> contents [
-	^ contents
+{ #category : #accessing }
+EgContactBook >> contacts [
+	^ contacts
 ]
 
-{ #category : #initialization }
-EgContactBook >> contents: anObject [
-	contents := anObject
+{ #category : #accessing }
+EgContactBook >> contacts: aCollection [
+	contacts := aCollection
 ]
 
-{ #category : #initialization }
+{ #category : #testing }
 EgContactBook >> includesContact: aContact [
-	^ contents includes: aContact
+	^ contacts includes: aContact
 ]
 
 { #category : #initialization }
 EgContactBook >> initialize [
 
 		super initialize.
-		contents := OrderedCollection new
+		contacts := OrderedCollection new
 ]
 
-{ #category : #initialization }
+{ #category : #adding }
 EgContactBook >> removeContact: aContact [
-	contents remove: aContact
+	contacts remove: aContact
+]
+
+{ #category : #accessing }
+EgContactBook >> size [ 
+	^ contacts size
 ]
