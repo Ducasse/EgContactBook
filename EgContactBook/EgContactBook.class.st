@@ -51,11 +51,6 @@ EgContactBook >> addContact: aContact [
 	contacts add: aContact
 ]
 
-{ #category : #adding }
-EgContactBook >> addContact: newContact after: contactAfter [ 
-	contacts add: newContact after: contactAfter
-]
-
 { #category : #accessing }
 EgContactBook >> contacts [
 	^ contacts
@@ -64,6 +59,12 @@ EgContactBook >> contacts [
 { #category : #accessing }
 EgContactBook >> contacts: aCollection [
 	contacts := aCollection
+]
+
+{ #category : #query }
+EgContactBook >> findContactsWithText: aText [ 
+
+	^ contacts select: [ :e | e hasMatchingText: aText ]	
 ]
 
 { #category : #testing }

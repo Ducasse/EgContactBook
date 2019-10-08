@@ -18,6 +18,12 @@ EgContact class >> name: aNameString phone: aPhoneString [
 ]
 
 { #category : #printing }
+EgContact >> hasMatchingText: aString [ 
+	
+	^ name includesSubstring: aString caseSensitive: false
+]
+
+{ #category : #printing }
 EgContact >> name [
 	^ name
 ]
