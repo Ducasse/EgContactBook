@@ -86,3 +86,8 @@ EgContactBookPresenter >> table: anObject [
 EgContactBookPresenter >> title [ 
 	^ 'Pharo Contact Book'
 ]
+
+{ #category : #updating }
+EgContactBookPresenter >> updateView [
+	table items: contactBook contacts
+]
