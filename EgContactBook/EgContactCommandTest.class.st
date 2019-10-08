@@ -2,34 +2,45 @@ Class {
 	#name : #EgContactCommandTest,
 	#superclass : #TestCase,
 	#instVars : [
-		'cm'
+		'cm',
+		'presenter'
 	],
 	#category : #EgContactBook
 }
 
 { #category : #tests }
-EgContactCommandTest >> testContactBook [
-	| presenter |
-	presenter := (EgContactBookPresenter on: EgContactBook coworkers).
+EgContactCommandTest >> setUp [
+	
+	presenter := EgContactBookPresenter on: EgContactBook coworkers.
 	cm := EgContactBookCommand new context: presenter.
+	^ presenter
+]
+
+{ #category : #tests }
+EgContactCommandTest >> testContactBook [
+
 	self assert: cm contactBook == presenter contactBook
 ]
 
 { #category : #tests }
 EgContactCommandTest >> testContactBookPresenter [
-	| presenter |
-	presenter := (EgContactBookPresenter on: EgContactBook coworkers).
-	cm := EgContactBookCommand new context: presenter.
+
 	self assert: cm contactBookPresenter equals: presenter
+]
+
+{ #category : #tests }
+EgContactCommandTest >> testHasSelectedContract [
+	| item |
+	presenter table selectIndex: 1.
+	item := presenter selectedContact.
+	self assert: cm hasSelectedContact
 ]
 
 { #category : #tests }
 EgContactCommandTest >> testSelectedContact [
 
-	| presenter item |
-	presenter := (EgContactBookPresenter on: EgContactBook coworkers).
+	|  item |
 	presenter table selectIndex: 1.
 	item := presenter selectedContact.  
-	cm := EgContactBookCommand new context: presenter.
 	self assert: cm selectedContact equals: item
 ]
