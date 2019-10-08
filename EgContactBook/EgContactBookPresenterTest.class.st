@@ -33,3 +33,9 @@ EgContactBookPresenterTest >> testWindowHasEntryList [
 
 	self assert: (window hasPresenter: presenter table)
 ]
+
+{ #category : #running }
+EgContactBookPresenterTest >> testWindowTitle [
+
+	self assert: window title equals: 'Pharo Phonebook'.
+]
