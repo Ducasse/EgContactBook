@@ -28,7 +28,7 @@ EgContactBookPresenter >> initializePresenters [
 	table 
 		addColumn: (SpStringTableColumn title: 'Name' evaluated: #name);
 		addColumn: (SpStringTableColumn title: 'Phone' evaluated: #phone).
-	table items: contactBook contents.
+	table items: contactBook contacts.
 ]
 
 { #category : #accessing }
