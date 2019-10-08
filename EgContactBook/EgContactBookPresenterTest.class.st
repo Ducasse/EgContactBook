@@ -29,6 +29,12 @@ EgContactBookPresenterTest >> tearDown [
 ]
 
 { #category : #running }
+EgContactBookPresenterTest >> testStartsWithoutSelection [
+
+	self assert: presenter table selection isEmpty
+]
+
+{ #category : #running }
 EgContactBookPresenterTest >> testWindowHasEntryList [
 
 	self assert: (window hasPresenter: presenter table)
@@ -37,5 +43,5 @@ EgContactBookPresenterTest >> testWindowHasEntryList [
 { #category : #running }
 EgContactBookPresenterTest >> testWindowTitle [
 
-	self assert: window title equals: 'Pharo Phonebook'.
+	self assert: window title equals: 'Pharo Contact Book'.
 ]

@@ -22,7 +22,7 @@ EgContactBookPresenter >> contactBook [
 	^ contactBook
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 EgContactBookPresenter >> initializePresenters [
 	table := self newTable.
 	table 
@@ -31,7 +31,13 @@ EgContactBookPresenter >> initializePresenters [
 	table items: contactBook contacts.
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
+EgContactBookPresenter >> initializeWindow: aWindowPresenter [
+	super 	initializeWindow: aWindowPresenter.
+	aWindowPresenter title: self title
+]
+
+{ #category : #actions }
 EgContactBookPresenter >> newContact [
 	| rawData splitted |
 	rawData := self 
@@ -48,7 +54,7 @@ EgContactBookPresenter >> newContact [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : #initialization }
 EgContactBookPresenter >> setModelBeforeInitialization: aContactBook [
 
 	super setModelBeforeInitialization: aContactBook.
@@ -63,4 +69,9 @@ EgContactBookPresenter >> table [
 { #category : #accessing }
 EgContactBookPresenter >> table: anObject [
 	table := anObject
+]
+
+{ #category : #initialization }
+EgContactBookPresenter >> title [ 
+	^ 'Pharo Contact Book'
 ]
