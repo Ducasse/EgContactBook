@@ -63,7 +63,7 @@ EgContactBookPresenter >> initializePresenters [
 		addColumn: (SpStringTableColumn title: 'Name' evaluated: #name);
 		addColumn: (SpStringTableColumn title: 'Phone' evaluated: #phone).
 	
-	table contextMenu: [ (self rootCommandsGroup / 'Context Menu') beRoot asMenuPresenter ].
+	table contextMenu: [ (self rootCommandsGroup) beRoot asMenuPresenter ].
 	table items: contactBook contacts
 ]
 
@@ -94,6 +94,20 @@ EgContactBookPresenter >> newContact [
 		name: splitted first;
 		phone: splitted second;
 		yourself
+]
+
+{ #category : #actions }
+EgContactBookPresenter >> newPhone [
+	| phone |
+	phone := self 
+		request: 'New phone for the contact'
+		initialAnswer: self selectedContact phone 
+		title: 'Set new phone for contact'.
+	(phone matchesRegex: '\d\d\d\s\d\d\d')
+		ifFalse: [ 
+			SpInvalidUserInput signal: 'The phone number is not well formated. 
+Should match "\d\d\d\s\d\d\d"' ].
+	^ phone
 ]
 
 { #category : #accessing }
