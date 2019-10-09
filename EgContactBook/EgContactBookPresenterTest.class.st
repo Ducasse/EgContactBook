@@ -13,6 +13,7 @@ Class {
 EgContactBookPresenterTest >> setUp [ 
 
 	super setUp.
+	EgContactBook reset.
 	contactBook := EgContactBook new.
 	contactBook addContact: (EgContact name: 'A Person' phone: '11223344' ).
 

@@ -10,7 +10,7 @@ Class {
 
 { #category : #tests }
 EgContactCommandTest >> setUp [
-	
+	EgContactBook reset.
 	presenter := EgContactBookPresenter on: EgContactBook coworkers.
 	cm := EgContactBookCommand new context: presenter.
 	^ presenter
@@ -34,6 +34,14 @@ EgContactCommandTest >> testHasSelectedContract [
 	presenter table selectIndex: 1.
 	item := presenter selectedContact.
 	self assert: cm hasSelectedContact
+]
+
+{ #category : #tests }
+EgContactCommandTest >> testRemoveContact [
+	self assert: presenter contactBook size equals: 3.
+	presenter table selectIndex: 1.
+	(EgRemoveContactCommand new context: presenter) execute.
+	self assert: presenter contactBook size equals: 2
 ]
 
 { #category : #tests }

@@ -1,7 +1,8 @@
 "
-| presenter |
-presenter := (EgContactBookPresenter on: EgContactBook coworkers).
-(EgAddContactCommand new context: presenter ) execute
+| presenter cmd |
+presenter := EgContactBookPresenter on: EgContactBook coworkers.
+cmd := EgAddContactCommand new context: presenter.
+cmd execute
 "
 Class {
 	#name : #EgAddContactCommand,
