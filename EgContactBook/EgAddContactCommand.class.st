@@ -11,10 +11,14 @@ Class {
 }
 
 { #category : #converting }
-EgAddContactCommand >> asSpecCommandWithIconNamed: aSymbol shortcutKey: aKMKeyCombination [
-
-	^ super asSpecCommandWithIconNamed: #changeAdd shortcutKey: $a meta
-		
+EgAddContactCommand >> asSpecCommand [
+	"Here we define the additional information the command will need to know
+	 when used in the Spec framework.
+	"
+	^ super asSpecCommand
+		shortcutKey: $n meta;
+		iconName: #changeAdd;
+		yourself
 ]
 
 { #category : #initialization }
