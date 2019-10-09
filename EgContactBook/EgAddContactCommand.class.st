@@ -10,6 +10,13 @@ Class {
 	#category : #EgContactBook
 }
 
+{ #category : #converting }
+EgAddContactCommand >> asSpecCommandWithIconNamed: aSymbol shortcutKey: aKMKeyCombination [
+
+	^ super asSpecCommandWithIconNamed: #changeAdd shortcutKey: $a meta
+		
+]
+
 { #category : #initialization }
 EgAddContactCommand >> execute [
 	
