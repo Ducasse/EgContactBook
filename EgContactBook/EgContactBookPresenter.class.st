@@ -6,7 +6,8 @@ Class {
 	#superclass : #SpPresenter,
 	#instVars : [
 		'table',
-		'contactBook'
+		'contactBook',
+		'menuBar'
 	],
 	#category : #EgContactBook
 }
@@ -25,6 +26,7 @@ EgContactBookPresenter class >> buildCommandsGroupWith: presenter
 	forRoot: rootCommandGroup [
 	
 	rootCommandGroup
+		register: (self buildMenuBarGroupWith: presenter);
 		register: (self buildContextualMenuGroupWith: presenter)
 ]
 
@@ -34,6 +36,14 @@ EgContactBookPresenter class >> buildContextualMenuGroupWith: presenter [
 		register: (self buildAddingGroupWith: presenter);
 		register: (self buildRemovingGroupWith: presenter);
 		yourself
+]
+
+{ #category : #menubar }
+EgContactBookPresenter class >> buildMenuBarGroupWith: presenter [
+	^ (CmCommandGroup named: 'MenuBar') asSpecGroup
+		register: (EgPrintContactCommand forSpec);
+		yourself
+		
 ]
 
 { #category : #menus }
@@ -64,11 +74,12 @@ EgContactBookPresenter >> initializePresenters [
 		addColumn: (SpStringTableColumn title: 'Phone' evaluated: #phone).
 	
 	table contextMenu: [ (self rootCommandsGroup) beRoot asMenuPresenter ].
-	table items: contactBook contacts
+	table items: contactBook contacts.
+	menuBar := (self rootCommandsGroup / 'MenuBar') asMenuBarPresenter.
 ]
 
 { #category : #initialization }
-EgContactBookPresenter >> initializeWindow: aWindowPresenter [
+EgContactBookPresenter >> initializeWindow2: aWindowPresenter [
 	super 	initializeWindow: aWindowPresenter.
 	aWindowPresenter title: self title
 ]
